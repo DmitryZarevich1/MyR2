@@ -75,5 +75,5 @@ class Calculator {
             System.out.println(x/y);
        }
         
-    }
+    }//для гита
 }

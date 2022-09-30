@@ -17,7 +17,7 @@ public class File {
      }
 
      fr.close();
-     //nFile.close();
+     //nFile.close();//для гита
 
 }
 }
