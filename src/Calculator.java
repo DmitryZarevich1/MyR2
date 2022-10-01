@@ -5,14 +5,14 @@ class Calculator {
     public static void main(String[]args) throws IOException {
     	 String s = "";
     	 File file = new File("input.txt");
+    	 File file1 = new File("output.txt");
          file.createNewFile();
-         FileWriter writer = new FileWriter(file);
-         writer.write("2 + 8"+"\n");
-         writer.flush();
-        // writer.close();
+         file1.createNewFile();
+         FileWriter writer = new FileWriter(file,true);
+         FileWriter writer1 = new FileWriter(file1,true);
+       
          //чтение из файла
-         try(FileReader reader = new FileReader("input.txt"))
-         {
+         /*try(FileReader reader = new FileReader("input.txt")) {
              int c;
              while((c=reader.read())!=-1){
                  s+=(char)c;
@@ -21,11 +21,11 @@ class Calculator {
              }
          catch(IOException ex){
              System.out.println(ex.getMessage());
-         }
-         
+         }*/
          
         Scanner scr = new Scanner(System.in);
-        String[]arr = scr.nextLine().split(" ");
+        String str = scr.nextLine();
+        String[]arr = str.split(" ");
         scr.close();
         boolean is_flag = true;
         
@@ -34,11 +34,12 @@ class Calculator {
         double a = Double.parseDouble(arr[0]);
         x = a;
         } catch (Exception ex) {
-        System.out.println("Error! Not number");
+        System.out.println(str+" = "+"Error! Not number");
             is_flag = false;
-            writer.write("Error! Not number");
+            writer.write(str+"\n");
             writer.flush();
-           // writer.close();
+            writer1.write(str+" = "+"Error! Not number"+"\n");
+            writer1.flush();
         }
         
         if(is_flag) {
@@ -46,11 +47,12 @@ class Calculator {
         double b = Double.parseDouble(arr[2]);
         y = b;
         } catch (Exception ex) {
-        System.out.println("Error! Not number");
+        System.out.println(str+" = "+"Error! Not number");
              is_flag = false;
-             writer.write("Error! Not number");
+             writer.write(str+"\n");
              writer.flush();
-           //  writer.close();
+             writer1.write(str+" = "+"Error! Not number"+"\n");
+             writer1.flush();
         }}
         
         if(is_flag) {
@@ -61,9 +63,10 @@ class Calculator {
         } catch (Exception ex) {
           System.out.println(ex.getMessage());
              is_flag = false;
-             writer.write("Operation Error!");
+             writer.write(str+"\n");
              writer.flush();
-            // writer.close();
+             writer1.write(str+" = "+"Operation Error!"+"\n");
+             writer1.flush();
         }}
         
         if(is_flag) {
@@ -73,38 +76,43 @@ class Calculator {
         } catch (ArithmeticException ex) {
            System.out.println(ex.getMessage());
              is_flag = false;
-             writer.write("Error! Division by zero");
+             writer.write(str+"\n");
              writer.flush();
-            // writer.close();
+             writer1.write(str+" = "+"Error! Division by zero"+"\n");
+             writer1.flush();
         }}
         
          if(is_flag) {
          if(arr[1].equals("+")) {
             System.out.println(x+y);
-              writer.write(String.valueOf(x+y));
+              writer.write(str+"\n");
               writer.flush();
-             // writer.close();
+              writer1.write(str+" = "+String.valueOf(x+y)+"\n");
+              writer1.flush();
          }
            
          if(arr[1].equals("-")) {
             System.out.println(x-y);
-            writer.write(String.valueOf(x-y));
+            writer.write(str+"\n");
             writer.flush();
-           // writer.close();
+            writer1.write(str+" = "+String.valueOf(x-y)+"\n");
+            writer1.flush();
          }
            
          if(arr[1].equals("*")) {
             System.out.println(x*y);
-            writer.write(String.valueOf(x*y));
+            writer.write(str+"\n");
             writer.flush();
-           // writer.close();
+            writer1.write(str+" = "+String.valueOf(x*y)+"\n");
+            writer1.flush();
          }
             
          if(arr[1].equals("/")) {
             System.out.println(x/y);
-            writer.write(String.valueOf(x/y));
+            writer.write(str+"\n");
             writer.flush();
-           // writer.close();
+            writer1.write(str+" = "+String.valueOf(x/y)+"\n");
+            writer1.flush();
          }
        }
          writer.close();

@@ -1,0 +1,8 @@
+234 + 9884 = 10118.0
+45 - 87765 = -87720.0
+3455 * 98 = 338590.0
+34 / 87765232 = 3.87397141501318E-7
+34re * 45 = Error! Not number
+345 / 987uy = Error! Not number
+3445 ) 987 = Operation Error!
+345 / 0 = Error! Division by zero
