@@ -7,9 +7,9 @@ class Calculator {
     	 File file = new File("input.txt");
          file.createNewFile();
          FileWriter writer = new FileWriter(file);
-         writer.write("2 + 8");
+         writer.write("2 + 8"+"\n");
          writer.flush();
-         writer.close();
+        // writer.close();
          //чтение из файла
          try(FileReader reader = new FileReader("input.txt"))
          {
@@ -36,6 +36,9 @@ class Calculator {
         } catch (Exception ex) {
         System.out.println("Error! Not number");
             is_flag = false;
+            writer.write("Error! Not number");
+            writer.flush();
+           // writer.close();
         }
         
         if(is_flag) {
@@ -45,6 +48,9 @@ class Calculator {
         } catch (Exception ex) {
         System.out.println("Error! Not number");
              is_flag = false;
+             writer.write("Error! Not number");
+             writer.flush();
+           //  writer.close();
         }}
         
         if(is_flag) {
@@ -55,6 +61,9 @@ class Calculator {
         } catch (Exception ex) {
           System.out.println(ex.getMessage());
              is_flag = false;
+             writer.write("Operation Error!");
+             writer.flush();
+            // writer.close();
         }}
         
         if(is_flag) {
@@ -64,21 +73,41 @@ class Calculator {
         } catch (ArithmeticException ex) {
            System.out.println(ex.getMessage());
              is_flag = false;
+             writer.write("Error! Division by zero");
+             writer.flush();
+            // writer.close();
         }}
         
          if(is_flag) {
-         if(arr[1].equals("+"))
+         if(arr[1].equals("+")) {
             System.out.println(x+y);
+              writer.write(String.valueOf(x+y));
+              writer.flush();
+             // writer.close();
+         }
            
-         if(arr[1].equals("-"))
+         if(arr[1].equals("-")) {
             System.out.println(x-y);
+            writer.write(String.valueOf(x-y));
+            writer.flush();
+           // writer.close();
+         }
            
-         if(arr[1].equals("*"))
+         if(arr[1].equals("*")) {
             System.out.println(x*y);
+            writer.write(String.valueOf(x*y));
+            writer.flush();
+           // writer.close();
+         }
             
-         if(arr[1].equals("/"))
+         if(arr[1].equals("/")) {
             System.out.println(x/y);
+            writer.write(String.valueOf(x/y));
+            writer.flush();
+           // writer.close();
+         }
        }
+         writer.close();
         
     }//для гита
 }
