@@ -3,25 +3,30 @@ import java.util.*;
 import java.io.*;
 class Calculator {
     public static void main(String[]args) throws IOException {
-    	
-         FileWriter nFile = new FileWriter("file1.txt");
-    	 nFile.write("Хокку \nПодобен лучу самурайский клинок \nИ тот затупился \nПроклятая килька в томате!!");
-         
-         FileReader fr = new FileReader("file1.txt");
-         Scanner scr1 = new Scanner(fr);
-         
-         while (scr1.hasNextLine()) {
-             System.out.println(scr1.nextLine());
+    	 String s = "";
+    	 File file = new File("input.txt");
+         file.createNewFile();
+         FileWriter writer = new FileWriter(file);
+         writer.write("2 + 8");
+         writer.flush();
+         writer.close();
+         //чтение из файла
+         try(FileReader reader = new FileReader("input.txt"))
+         {
+             int c;
+             while((c=reader.read())!=-1){
+                 s+=(char)c;
+             }
+             System.out.println(s);
+             }
+         catch(IOException ex){
+             System.out.println(ex.getMessage());
          }
-  
-         fr.close();
-         nFile.close();
          
          
         Scanner scr = new Scanner(System.in);
         String[]arr = scr.nextLine().split(" ");
         scr.close();
-        scr1.close();
         boolean is_flag = true;
         
         double x=0,y=0,z=0;
